@@ -8,10 +8,10 @@ import 'package:mind_forge/services/repos/boxes.dart';
 import 'package:provider/provider.dart';
 
 class Subtopics extends StatefulWidget {
-  final MyDetails widget;
-  final Model model;
+  final MyDetails? widget;
+  final Model? model;
 
-  const Subtopics({Key? key, required this.widget, required this.model}) : super(key: key);
+   Subtopics({Key? key,  this.widget,  this.model}) : super(key: key);
 
   @override
   State<Subtopics> createState() => _SubtopicsState();
@@ -117,13 +117,13 @@ bool isChecked = false;
 void initState() {
   super.initState();
   //_isChecked = false;
-  if (widget.model.subtopicChecked.length != widget.model.subtopic.length) {
-    widget.model.subtopicChecked = List.generate(widget.model.subtopic.length, (_) => false);
+  if (widget.model!.subtopicChecked.length != widget.model!.subtopic.length) {
+    widget.model!.subtopicChecked = List.generate(widget.model!.subtopic.length, (_) => false);
   }
   WidgetsBinding.instance.addPostFrameCallback((_) {
     final pomodoroModel = context.read<PomodoroModel>();
-      pomodoroModel.setModel(widget.model);
-   pomodoroModel.initializeSubtopicTimers(widget.model.subtopic);
+      pomodoroModel.setModel(widget.model!);
+   pomodoroModel.initializeSubtopicTimers(widget.model!.subtopic);
       });
   
 }
@@ -140,9 +140,9 @@ void initState() {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView.builder(
-          itemCount: widget.model.subtopic.length,
+          itemCount: widget.model!.subtopic.length,
           itemBuilder: (context, index) {
-            var subtopicData = widget.model.subtopic[index];
+            var subtopicData = widget.model!.subtopic[index];
             return Card(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
@@ -150,7 +150,7 @@ void initState() {
               child: 
           ListTile(
   title: Text(
-    subtopicData,
+    subtopicData??'',
     style: TextStyle(
       fontWeight: FontWeight.w600,
       color: Colors.green[900],
@@ -166,11 +166,11 @@ void initState() {
     children: [
     
       Checkbox(
-  value: widget.model.subtopicChecked[index],
+  value: widget.model!.subtopicChecked[index],
   onChanged: (bool? newValue) {
     setState(() {
-      widget.model.subtopicChecked[index] = newValue!;
-        widget.model.save();
+      widget.model!.subtopicChecked[index] = newValue!;
+        widget.model!.save();
     context.read<PomodoroModel>().updateSubtopicCheckedStatus(subtopicData, newValue);
     });
   
@@ -179,9 +179,9 @@ void initState() {
       PopupMenuButton(
         onSelected: (value) {
           if (value == 'edit') {
-            _showAlertDialog(context, index, widget.model);
+            _showAlertDialog(context, index, widget.model!);
           } else if (value == 'delete') {
-            deleteSubtopic(widget.model, subtopicData);
+            deleteSubtopic(widget.model!, subtopicData);
             setState(() {
               
             });
@@ -215,7 +215,7 @@ void initState() {
         onPressed: () {
           // Navigate to add new subtopic page
           // You'll need to create a NewSubtopics widget similar to NewAssignments
-           Navigator.of(context).push(MaterialPageRoute(builder: (context) => NewSubtopics(model: widget.model))).then((value) => setState(() {}));
+           Navigator.of(context).push(MaterialPageRoute(builder: (context) => NewSubtopics(model: widget.model!))).then((value) => setState(() {}));
         },
         backgroundColor: Colors.deepOrange[600],
         child: Icon(Icons.add),

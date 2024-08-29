@@ -3,7 +3,7 @@ import 'package:mind_forge/screens/assignments/viewAsmts.dart';
 import 'package:mind_forge/screens/dashboard/my_home_content.dart';
 import 'package:mind_forge/screens/exam/exam.dart';
 import 'package:mind_forge/screens/media/media.dart';
-import 'package:mind_forge/screens/profile/account.dart';
+import 'package:mind_forge/screens/account/account.dart';
 import 'package:mind_forge/screens/search/search_topics.dart';
 import 'package:mind_forge/services/models/model.dart';
 

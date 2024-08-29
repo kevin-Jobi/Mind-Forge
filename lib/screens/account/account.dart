@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mind_forge/screens/profile/profile_widgets.dart';
+import 'package:mind_forge/screens/account/profile_widgets.dart';
 import 'package:mind_forge/screens/search/search_subtopics.dart';
-import 'package:mind_forge/screens/profile/settings.dart';
+import 'package:mind_forge/screens/account/settings/settings.dart';
 import 'package:mind_forge/services/models/model.dart';
-import 'package:mind_forge/services/repos/boxes.dart';
 
 class MyProfile extends StatefulWidget {
   const MyProfile({super.key});
@@ -15,11 +14,7 @@ class MyProfile extends StatefulWidget {
 class _MyProfileState extends State<MyProfile> {
   Model1? box;
 
-  @override
-  void initState() {
-    super.initState();
-    box = Boxes.getData1().get('profile');
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +39,8 @@ class _MyProfileState extends State<MyProfile> {
         ),
         body: Column(
           children: [
-            UserProfileWidget(box: box),
-            buildProfileOption(
-              icon: Icons.favorite,
-              color: Colors.red,
-              label: 'Favorites',
-            ),
+            UserProfileWidget(),
+           
             buildProfileOption(
               icon: Icons.search,
               color: Colors.blue,

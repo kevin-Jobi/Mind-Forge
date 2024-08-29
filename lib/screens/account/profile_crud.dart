@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:mind_forge/screens/profile/sav_profile.dart';
+import 'package:mind_forge/screens/account/sav_profile.dart';
 import 'package:mind_forge/services/repos/boxes.dart';
 
 class MyProfileCrud extends StatefulWidget {

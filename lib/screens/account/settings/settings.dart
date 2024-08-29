@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mind_forge/screens/profile/profile_crud.dart';
+import 'package:mind_forge/screens/account/settings/reminders.dart';
+import 'package:mind_forge/screens/privacy_policy/privacy_policy.dart';
+import 'package:mind_forge/screens/account/profile_crud.dart';
+import 'package:share_plus/share_plus.dart';
 
 class MySettings extends StatelessWidget {
   MySettings({super.key});
@@ -40,6 +43,17 @@ class MySettings extends StatelessWidget {
                     Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => MyProfileCrud()),
                     );
+                  } else if(index ==1){
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context)=>MyPrivacyState()));
+                  } else if (index ==2){
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context)=>Reminder()));
+                  } else if(index ==3){
+                    Share.share(
+      'https://www.amazon.com/dp/B0DF8JRPQQ/ref=apps_sf_sta',
+    );   
+                    
                   }
                 },
                 child: Container(
